@@ -1,0 +1,22 @@
+{
+  "pages":[
+          "pages/questions/questions",
+        "pages/demo/demo",
+       
+        "pages/login/login",
+      
+        "pages/Consultation/Consultation",
+        "pages/addimages/addimages",
+        "pages/Consultation_details/Consultation_details",
+        "pages/myList/myList",
+        "pages/forgot_password/forgot_password",
+        "pages/register/register",
+        "pages/Agreement/Agreement"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "律师帮帮",
+    "navigationBarTextStyle":"black"
+  }
+}
