@@ -6,3 +6,5 @@ pages\login ： 利用setStorage存储的登陆信息，判断是否是登陆的
 pages\Consultation:上拉刷新，筛选刷新等<br />
 pages\addimages:上传多张图片、记录信息等<br />
 
+2017/9-17 
+map\mappos:更新了 地图定位的功能
