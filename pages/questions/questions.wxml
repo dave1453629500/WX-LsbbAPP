@@ -1,7 +1,7 @@
 <!--title部分  -->
 <view class="title">
     <view class="title-txt">
-        <text  bindtap="showMask">打赏金额</text>
+        <text>打赏金额</text>
         <text>开启打赏，律师第一时间回复</text>
     </view>
 </view> 
@@ -51,5 +51,4 @@
                 </picker-view-column>
         </picker-view>
 </view>
-
 </view>

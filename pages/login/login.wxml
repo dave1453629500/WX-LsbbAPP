@@ -16,7 +16,7 @@
          value="{{phone}}"   />
       </view>
       <view class="section">
-        <input password type="number" name='pasd'   placeholder="请输入您的密码"  disabled = "{{btndisabled}}" value = "{{pasd}}" placeholder-class='placeholders' />
+        <input password type="text" name='pasd'   placeholder="请输入您的密码"  disabled = "{{btndisabled}}" value = "{{pasd}}" placeholder-class='placeholders' />
       </view>
       <view class="section section-flex">
             <view class="checkbox  text ">

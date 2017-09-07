@@ -45,7 +45,7 @@ Page({
                 questions.textareaVal = textareaVal;
                 questions.url = imgsList;
                 Utils.setStorage("tw", questions);
-                wx.redirectTo({
+                wx.navigateTo({
                         url: '/pages/questions/questions'
                 })
             } else {

@@ -1,7 +1,7 @@
 <view class="head-cen">
     <view class="head">
         <view class="head-left ">
-                <text>北京</text>
+                <text>{{positions}}</text>
                 <image src="/images/coordinates.png"></image>
         </view>
          <image src="/images/setup.png"></image>

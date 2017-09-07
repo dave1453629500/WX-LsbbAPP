@@ -45,9 +45,8 @@ Page({                                                  // page项
   onLoad: function (options) {
       // 页面初始化 、加载请求数据
       var _this = this ;
-     page++;
+      page++;
      _this.loadMore(_this, page);
-//   console.log(getFn)
   },
   onReady: function () {
  
@@ -120,10 +119,9 @@ Page({                                                  // page项
           layerVal: doId,
           sortID: "0"
       })
-
       var res = this.commvalFn();  //放在修改data数据之后
       page = 1;       // 每次点击切换的时候强制让page = 1;
-
+        
       switch (res.layerVal) {
           case "0":
               _this.rollFn(res.navArr[res.data], "1");
@@ -136,17 +134,7 @@ Page({                                                  // page项
               break;
       }
   },
-rollFn: function (name, order){          // 切换滚动的时候清空请求接口
 
-    name = typeof name == "undefined" ? "" : name;
-    order = typeof order == "undefined" ? "" : order;
-    
-    var _this = this;
-    this.setData({
-        results: []
-    });
-    this.loadMore(_this, page, name, order);
-},
 navFn:function(e){      // 点击nav the list
     var _this = this;
     var doId = e.target.id;
@@ -156,23 +144,35 @@ navFn:function(e){      // 点击nav the list
     });
 
     var res = this.commvalFn();  //放在修改data数据之后
-    page = 1;       // 每次点击切换的时候强制让page = 1;
 
+    page = 1;       // 每次点击切换的时候强制让page = 1;
     switch (_this.data.value) {
         case "0":
             _this.rollFn();
             break;
         case "1":
-            _this.rollFn(res.navArr[res.tada]);
+        _this.rollFn(res.navArr[_this.data.value]);
             break;
         case "2":
-            _this.rollFn(res.navArr[res.tada]);
+        _this.rollFn(res.navArr[_this.data.value]);
             break;
         case "3":
-            _this.rollFn(res.navArr[res.tada]);
+        _this.rollFn(res.navArr[_this.data.value]);
             break;
     }
   },
+rollFn: function (name, order) {          // 切换滚动的时候清空请求接口
+
+        name = typeof name == "undefined" ? "" : name;
+        order = typeof order == "undefined" ? "" : order;
+
+        var _this = this;
+        this.setData({
+                results: []
+        });
+
+        this.loadMore(_this, page, name, order);
+},
 sortFn:function(){          // 点击排序展开、收起
     var doid = this.data.sortID;
     doid = doid == "0"? "1":"0";
@@ -192,8 +192,9 @@ myNews:function(){      // 点击我的页面
         })
     }
 },
+
 ConsultationFn:function(){      // 咨询跳转
-    wx.redirectTo({
+        wx.navigateTo({
         url:'/pages/addimages/addimages'
     })
 },
