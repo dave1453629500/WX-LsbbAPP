@@ -10,7 +10,7 @@ var qqmapsdk;  // map对象
 var coordinate = function() {  // 获取位置
         // 调用接口
         qqmapsdk = new QQMapWX({
-                key: 'AFLBZ-PV2KG-MOZQF-ILTTX-WB6X7-TUFRP'
+                key: '亲爱的,自己去申请'
         });
         return qqmapsdk;
 }

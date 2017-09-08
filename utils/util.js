@@ -53,7 +53,7 @@ var showModal = function(title,text){
 
 // 配置域名
 var url = (function(){
-    return "https://m.12348.com.cn"
+    return "这个不能说哦~"
 }());
 
 module.exports = {
