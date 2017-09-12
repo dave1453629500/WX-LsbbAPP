@@ -16,8 +16,9 @@ function formatNumber(n) {
 // 验证手机号码
 var Verification = (function(){
   var reg = {
-    phone: /^1(3|4|5|7|8)\d{9}$/,                                  // 手机号
-    email: /^\w+@[a-z0-9]+(\.[a-z]+){1,3}$/                // 邮箱
+    phone: /^1(3|4|5|7|8)\d{9}$/,                           // 手机号
+    email: /^\w+@[a-z0-9]+(\.[a-z]+){1,3}$/,                // 邮箱
+    Ftrim: /^\s+|\s+$/gm                                      // 前后空格
   }
   return reg;
 }());
@@ -53,14 +54,31 @@ var showModal = function(title,text){
 
 // 配置域名
 var url = (function(){
-    return "这个不能说哦~"
+    return "自己写"
 }());
+
+// 弹出层，关于全部的页面，跳转
+var reLaunch = function (test, url){
+    wx.showModal({
+        title: '提示',
+        content: test,
+        showCancel: false,
+        success: function (res) {
+            if (res.confirm) {
+                wx.reLaunch({
+                    url: url
+                })
+            }
+        }
+    })
+}
 
 module.exports = {
   formatTime: formatTime,                   // 计算时间
-  Verification: Verification,                   // 验证手机号码
-  removeStorage: removeStorage,     // 删除本地的Storage
+  Verification: Verification,                // 验证手机号码
+  removeStorage: removeStorage,             // 删除本地的Storage
   setStorage: setStorage,                   // 添加本地的Storage
-  showModal: showModal,                 // 提示框
-  url: url                                              // 配置url
+  showModal: showModal,                     // 提示框
+  url: url,                                   // 配置url
+  reLaunch: reLaunch                        // 弹层跳转
 }

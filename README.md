@@ -6,5 +6,15 @@ pages\login ： 利用setStorage存储的登陆信息，判断是否是登陆的
 pages\Consultation:上拉刷新，筛选刷新等<br />
 pages\addimages:上传多张图片、记录信息等<br />
 
-2017/9-17 
+2017-9-17 
 map\mappos:更新了 地图定位的功能
+
+2017-9-12
+pages/Reply/Reply:更新了 回复的功能
+pages/static/... :更新了一些文本的静态内容
+pages/setUp/setUp :更新了退出登陆，修改密码
+
+完善的BUG：
+    1、每次点击详情的时候 都会加载更多重复的数据
+    2、点击跳转回复的时候回到上一个页面不能刷新的问题
+    3、

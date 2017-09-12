@@ -10,7 +10,7 @@ var qqmapsdk;  // map对象
 var coordinate = function() {  // 获取位置
         // 调用接口
         qqmapsdk = new QQMapWX({
-                key: '亲爱的,自己去申请'
+                key: '自己获取'
         });
         return qqmapsdk;
 }

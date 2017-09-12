@@ -30,6 +30,7 @@ Page({
 
     },
     submitFn: function () {   // 提交数据
+        Utils.setStorage("Reset", "/pages/addimages/addimages");
         var _this = this;
         // 获取到  textarea的val
         var textareaVal = this.data.textareaVal;

@@ -47,6 +47,7 @@ Page({                                                  // page项
       var _this = this ;
       page++;
      _this.loadMore(_this, page);
+     Utils.removeStorage("Reset");
   },
   onReady: function () {
  
@@ -181,6 +182,7 @@ sortFn:function(){          // 点击排序展开、收起
     });
 },
 myNews:function(){      // 点击我的页面
+    Utils.setStorage("Reset","/pages/myList/myList"); // 登陆后返回这个页面 记录
     var value = wx.getStorageSync('login');   // 获取到key
     if (value != ""  ){
         wx.redirectTo({
@@ -200,30 +202,33 @@ ConsultationFn:function(){      // 咨询跳转
 },
 jumpFn:function(e){              // 点击进入详情
         var DoId = e.currentTarget.id;          // 发送的对应详情的唯一ID值
-        wx.getStorage({
-                key: 'login',
-                success: function (res) {
-                        var sdk = res.data[0];
-                        var uid = res.data[3];
-                        wx.request({
-                                url: Utils.url +'/index.php/consultdetail?server=1', 
-                                data: {
-                                        sdk: sdk || "",
-                                        uid: uid || '',
-                                        id: DoId
-                                },
-                                header: {
-                                        'content-type': 'application/json'
-                                },
-                                success: function (res) {
-                                        var datas = JSON.stringify(res.data.data);
-                                        wx.navigateTo({
-                                                url: "/pages/Consultation_details/Consultation_details?a=" + datas
-                                        })
-                                       
-                                }
-                        })
+        var datas = "";
+        var loginDatas = wx.getStorageSync("login");    // 获取登陆信息
+        var loginJosn = {};
+        wx.request({
+            url: Utils.url + '/index.php/consultdetail?server=1',
+            data: {
+                sdk: loginDatas.sdk || "",
+                uid: loginDatas.uid || '',
+                id: DoId
+            },
+            header: {
+                'content-type': 'application/json'
+            },
+            success: function (res) {
+                datas = JSON.stringify(res.data.data);
+                // 记录一下传入详情的值，为详情刷新做准备
+                loginJosn = {
+                    sdk: loginDatas.sdk || "",
+                    uid: loginDatas.uid || "",
+                    id: DoId
                 }
-        }) 
+                Utils.setStorage("details", loginJosn)
+                wx.navigateTo({
+                    url: "/pages/Consultation_details/Consultation_details?a=" + datas
+                })
+
+            }
+        })
 }
 })

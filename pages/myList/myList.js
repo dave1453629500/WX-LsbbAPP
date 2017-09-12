@@ -1,3 +1,5 @@
+
+var Utils = require("../../utils/util.js");
 // 加载地图
 var map = require('../../map/mappos.js');  
 
@@ -6,7 +8,6 @@ var commData = {
     usrename:"没有名字",            // 姓名
     positions:"" ,      // 位置
     pos: 1      // 判断是不是定位中的状态
-    
 } 
 
 Page({
@@ -18,15 +19,10 @@ onLoad: function () {
 getStorage:function(){
         var _this = this;
         var commDatas = _this.data;
-        wx.getStorage({
-                key: 'login',
-                success: function (res) {
-                        var dataArr = res.data;
-                        _this.setData({
-                                image: dataArr[2] || commDatas.image,
-                                usrename: dataArr[1] || commDatas.usrename
-                        })
-                }
+        var loginData = wx.getStorageSync("login");
+        this.setData({
+            image: Utils.url + loginData.image || Utils.url +commDatas.image,
+            usrename: loginData.nickname || commDatas.usrename
         })
 },
 coordinate:function(){

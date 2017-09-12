@@ -4,7 +4,7 @@
                 <text>{{positions}}</text>
                 <image src="/images/coordinates.png"></image>
         </view>
-         <image src="/images/setup.png"></image>
+         <navigator url = "/pages/setUp/setUp"><image src="/images/setup.png"></image></navigator>
     </view>
     <view class="head-user">
             <view class="head-users ">  

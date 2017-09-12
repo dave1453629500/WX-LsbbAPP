@@ -1,14 +1,14 @@
 
 // 函数库
 var Utils = require("../../utils/util.js");
-// 地图
-var map = require('../../map/mappos.js');  
+
+var map = require("../../map/mappos.js");
+
 
 var datalist = {
-    arr:[8,18,28,58,68,88],                  // 价钱的金额
-    value:"0",
-    doJson:{},                                    // 获取本地存储的login数据
+   doJson:{},            // 获取本地存储的login数据
     openid :"",
+    arr:[8,18,28,38,58,68],
    citysData: "", // 请求的数据
     province: "",  // 数组省
     city: "", // 数组市
@@ -264,11 +264,11 @@ releaseFn:function(){  // 提交数据
                         'paySign': payModel.paySign,
                         "total_fee":"8",
                         'success': function (res) {   // 成功的状态
-                               Utils.showModal("支付成功");
+                            Utils.reLaunch("支付成功","/pages/Consultation/Consultation")
                                return false;
                         },
                         'fail': function (res) {      // 失败的状态
-                                Utils.showModal("失败");
+                            Utils.reLaunch("支付失败", "/pages/Consultation/Consultation")
                                 return false;
                         }
                     })

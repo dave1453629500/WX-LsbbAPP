@@ -50,10 +50,13 @@
         padding: 0 30rpx;
 }
 .reply-list .title{
-        font-size: 40rpx;
-        margin: 30rpx 0;
-        color: #333;
-        display: block;
+    font-size: 40rpx;
+    margin: 30rpx 0;
+    color: #333;
+    display: block;
+}
+.list-details {
+    padding-bottom: 100rpx;
 }
 .list-details .list-details-title{
         display:flex;
@@ -127,4 +130,25 @@
 .content-reply .blue-txt {
         color:#1679f3;
         font-size: 30rpx;
+}
+.content-text text.reply{
+    color: blue;
+    font-size: 32rpx;
+}
+.replytext {
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80rpx;
+    border:1px solid #ccc;
+     align-items: center;
+    justify-content: center;
+    z-index: 9;
+    background: #e8e8e8;
+}
+.replytext text{
+    font-size: 32rpx;
+    color: #333;
 }

@@ -1,5 +1,5 @@
   <!--titlen部分  -->
-<view class='details-title'>
+<view class='details-title' id="{{faqid}}">
         <view class='title-user'>
                  <image src="{{logo}}"  class='logo' ait='律师'></image> 
                  <text>{{Mobile}}</text>
@@ -36,11 +36,12 @@
                         </view>
                 </view>
                 <!--列表的内容  -->
-                   <block  wx:for="{{itemDetails.contents}}" wx:key="{{}}" wx:for-item = "timeCenter">
+                   <block  wx:for="{{itemDetails.contents}}" wx:key="{{index}}" wx:for-item = "timeCenter">
                 <view class='list-details-content'>
                         <view class='content-text'>
                                 <text >{{timeCenter.content}}</text>
-                                <text>{{timeCenter.date}}</text>
+                                <text class="reply" bindtap="replyFn" id="{{timeCenter.id}}" data-parent_id="{{timeCenter.id}}" data-master_id="{{timeCenter.master_id}}">回复</text>
+                            <text>{{timeCenter.date}}</text>
                         </view>
                         <view class='content-reply' wx:if="{{timeCenter.child.length != '' }}" > 
                         <block  wx:for="{{timeCenter.child}}"  wx:for-item = "reply" wx:key="{{index}}">
@@ -52,4 +53,8 @@
                 </view>
                 </block>
         </view>
+</view>
+<!--回复框  -->
+<view class="replytext" wx:if="{{nReply != 0 }}" bindtap="ondataFn">
+    <text>请点击这里输入您要回复的内容</text>
 </view>
