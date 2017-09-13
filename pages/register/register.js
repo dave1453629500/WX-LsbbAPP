@@ -19,9 +19,10 @@ Page({                  // 配置项
         this.verSubmit(formVal);
     },
     verSubmit: function (formVal){                  // 提交
-       var _this = this; 
-       var valList = _this.verConfirmPasd(formVal) && _this.verPassd(formVal);
+        var _this = this; 
+        var valList = _this.verConfirmPasd(formVal) && _this.verPassd(formVal);
         var checkVal = Utils.Verification.phone;
+        var loginArr = {};  // 记住登陆名 密码
         if (!checkVal.test(_this.data.iponeVal)) {          // 提交判断手机号码
             Utils.showModal("手机号码不正确");
             return false;
@@ -48,6 +49,11 @@ Page({                  // 配置项
                 },
                 success: function (res) {           // 成功、返回的数据
                     if(res.data.status){
+                        loginArr = {        // 本地存储的手机号、密码
+                            phone: _this.data.iponeVal,
+                            pasd: _this.data.pasdVal
+                        }
+                        Utils.setStorage('success', loginArr);
                         wx.redirectTo({
                             url: '/pages/login/login'
                         })

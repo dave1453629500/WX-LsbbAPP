@@ -18,7 +18,7 @@
 </view>
 <!--回复列表  -->
 <view class='reply-list'>
-        <text class='title'>回复（20）</text>
+        <text class='title'>回复（{{len}}）</text>
         <!--列表循环  -->
         <view class='list-details'   wx:for="{{detailsArr}}" wx:key="{{index}}" wx:for-item ="itemDetails">
                 <!--列表的title  -->

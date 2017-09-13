@@ -18,7 +18,8 @@ var Verification = (function(){
   var reg = {
     phone: /^1(3|4|5|7|8)\d{9}$/,                           // 手机号
     email: /^\w+@[a-z0-9]+(\.[a-z]+){1,3}$/,                // 邮箱
-    Ftrim: /^\s+|\s+$/gm                                      // 前后空格
+    Ftrim: /^\s+|\s+$/gm,                                    // 前后空格
+    special: /^[\u4e00-\u9fa5]+$/g                          // 只匹中文字符
   }
   return reg;
 }());
@@ -54,7 +55,7 @@ var showModal = function(title,text){
 
 // 配置域名
 var url = (function(){
-    return "自己写"
+    return ""
 }());
 
 // 弹出层，关于全部的页面，跳转

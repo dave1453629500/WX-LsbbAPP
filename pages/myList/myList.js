@@ -5,24 +5,30 @@ var map = require('../../map/mappos.js');
 
 var commData = {
     image:"/images/user.png",       // 头像
-    usrename:"没有名字",            // 姓名
+    usrename:"路人",            // 姓名
     positions:"" ,      // 位置
-    pos: 1      // 判断是不是定位中的状态
+    pos: 1,      // 判断是不是定位中的状态
+    sex:"男"     //性别
 } 
-
 Page({
 data: commData,
 onLoad: function () {
         this.getStorage();          // 加载登陆的信息
         this.coordinate();              //加载位置
 },
+onShow:function(){  // 显示的时候加载数据
+    this.PersonalCenter();
+},
 getStorage:function(){
         var _this = this;
         var commDatas = _this.data;
         var loginData = wx.getStorageSync("login");
+        var imageSrc = loginData.image != null ? Utils.url +loginData.image : commDatas.image;
+        var nickname = loginData.nickname != null ? loginData.nickname : commDatas.usrename
+
         this.setData({
-            image: Utils.url + loginData.image || Utils.url +commDatas.image,
-            usrename: loginData.nickname || commDatas.usrename
+            image: imageSrc,
+            usrename: nickname
         })
 },
 coordinate:function(){
@@ -54,5 +60,37 @@ JumpFn:function(){            // 跳转
         wx.redirectTo({
                 url: '/pages/Consultation/Consultation'
         })
+},
+xgUserFn:function(){   // 跳转
+    wx.navigateTo({
+        url: '/pages/myListModify/myListModify'
+    })
+},
+PersonalCenter:function(){  // 获取修改的个人信息
+    var loginData = wx.getStorageSync("login");
+    var _this = this;
+    wx.request({
+        url: Utils.url + '/index.php/modifygetuser?server=1', 
+        data: {
+            sdk: loginData.sdk,
+            uid: loginData.uid
+        },
+        header: {
+            'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+            var res = res.data.data.user;
+            var imageSrc = res.image != null ? Utils.url + res.image : _this.data.image;
+
+            if (res.email != null){
+               _this.setData({
+                    image: imageSrc,
+                    usrename:res.nickname,
+                    sex: res.sex_txt
+                })
+            }
+            
+        }
+    })
 }
 })

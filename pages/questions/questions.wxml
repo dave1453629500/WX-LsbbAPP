@@ -33,9 +33,17 @@
        <image src="../../images/b.png"></image>
     </view>
 </view>
+<!-- 业务类型 -->
+<view class="input-text">
+    <text>业务类型</text>
+    <view class="val" bindtap="typeFn">
+        <text id="{{typeID}}">{{typeName}}</text>
+       <image src="../../images/b.png"></image>
+    </view>
+</view>
 <!--发布  -->
 <view class="release"  bindtap="releaseFn"><text>发布</text></view>
-<!--遮罩层  -->
+<!--所在区域 遮罩层  -->
 <view class='mask' wx:if="{{maskDis != 0 }}" >
         <view class='mask-back'   bindtap="CloseFn"></view>
         <view class='address'>
@@ -50,5 +58,19 @@
                 <view wx:for="{{area}}"  wx:key="{{index}}"  class='address-box'>{{item}}</view>
                 </picker-view-column>
         </picker-view>
+        </view>
 </view>
+<!--业务类型 遮罩层  -->
+<view class='mask' wx:if="{{maskDis1 != 0 }}">
+    <view class='mask-back'  bindtap="CloseFn"></view>
+    <view class='address'>
+       <picker-view indicator-style="height: 50px;" style="width: 100%; height: 150rpx;" value="{{typeArr}}" bindchange="change">
+            <picker-view-column>
+                 <view wx:for="{{Dtype}}" wx:key="{{index}}" style="line-height: 50px" id="{{item.id}}" class='address-box'>{{item.name}}</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view wx:for="{{Xtype}}"  wx:key="{{index}}" style="line-height: 50px" id="{{item.id}}" class='address-box'>{{item.name}}</view>
+            </picker-view-column>
+        </picker-view>
+    </view>
 </view>

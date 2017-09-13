@@ -43,11 +43,11 @@ Page({                                                  // page项
         })
     },
   onLoad: function (options) {
-      // 页面初始化 、加载请求数据
-      var _this = this ;
-      page++;
-     _this.loadMore(_this, page);
-     Utils.removeStorage("Reset");
+       // 页面初始化 、加载请求数据
+        var _this = this;
+        page = 1;
+        _this.loadMore(_this, page);
+        Utils.removeStorage("Reset");
   },
   onReady: function () {
  

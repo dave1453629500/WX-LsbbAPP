@@ -97,7 +97,6 @@ Page({
                          'user': 'test'
                      },
                      success: function (res) {
-                             console.log(res)
                          // 返回上传完成的img的src
                          var path = Utils.url + JSON.parse(res.data).data.path;
                          suArr.push(path);

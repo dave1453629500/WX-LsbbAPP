@@ -12,9 +12,9 @@ var datas = {
         detailsContent: "",         // 回复数据的内容            
         detailsTime: "",              // 回复数据的时间 
         faqid:"",        // 本页面的ID
-        nReply:0        // 回复的弹出层
+        nReply:0,        // 回复的弹出层
+        len:"",     // 回复的数量
 }
-
 Page({
         /**
          * 页面的初始数据
@@ -58,7 +58,9 @@ Page({
             for (var key in dataJson.answer) {
                 detailsData.push(dataJson.answer[key]);
             };
+          
             this.setData({
+                len: detailsData.length,        // 回复的len
                 logo: Utils.url + dataJson.faq.image,         // 头像
                 Mobile: dataJson.faq.nickname,// 手机号码
                 category1: dataJson.faq.cat_big,// 类别1
@@ -70,6 +72,7 @@ Page({
                 detailsArr: detailsData,      // 回复数据的list
                 faqid: dataJson.faq.id     // 本页面的iD
             })
+           
         },
         /**
          * 生命周期函数--监听页面初次渲染完成

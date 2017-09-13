@@ -31,8 +31,16 @@
     height: 175rpx;
 }
 .head-user .head-users {
-        display: flex;
-       align-items: center;
+    display: flex;
+    align-items: center;
+}
+.head-user .sex {
+    font-size: 36rpx;
+    color: #fff;
+}
+.sexFlex {
+     display: flex;
+    align-items: center;
 }
 .head-user .head-users image{
     height: 100rpx;
