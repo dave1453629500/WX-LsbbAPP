@@ -8,16 +8,19 @@ var commData = {
     usrename:"路人",            // 姓名
     positions:"" ,      // 位置
     pos: 1,      // 判断是不是定位中的状态
-    sex:"男"     //性别
+    sex:"男",     //性别
+    news:"0"       // 是否有消息
 } 
 Page({
 data: commData,
 onLoad: function () {
         this.getStorage();          // 加载登陆的信息
         this.coordinate();              //加载位置
+        this.newsFn();          // 请求登陆信息 获取消息中心的推送
 },
 onShow:function(){  // 显示的时候加载数据
     this.PersonalCenter();
+    this.newsFn();          // 请求登陆信息 获取消息中心的推送
 },
 getStorage:function(){
         var _this = this;
@@ -91,6 +94,36 @@ PersonalCenter:function(){  // 获取修改的个人信息
             }
             
         }
+    })
+},
+onNews:function(){
+    wx.navigateTo({
+        url: '/pages/myListStatic/news/news'
+    })
+},
+newsFn:function(){  // 请求登陆消息接口的推送
+    var _this = this;
+    var loginData = wx.getStorageSync("login");
+    wx.request({
+        url: Utils.url +'/index.php/profile?server=1', 
+        data: {
+            sdk: loginData.sdk,
+            uid: loginData.uid
+        },
+        header: {
+            'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+            var resData = res.data.data.msgcount;
+           _this.setData({
+               news: resData
+           })
+        }
+    })
+},
+onOrder:function(){   // 跳转到咨询的订单列表
+    wx.navigateTo({
+        url: '/pages/myListStatic/order/order'
     })
 }
 })

@@ -83,6 +83,16 @@
        color: #333;
        padding-left: 20rpx;
    }
+   .left-img {
+    flex: 1;
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+   }
+   .user-center .user-list image.yuan{
+        height: 18rpx;
+        width: 18rpx;
+   }
    .footer {
        position: fixed;
        bottom: 0;

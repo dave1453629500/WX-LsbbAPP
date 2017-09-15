@@ -55,7 +55,7 @@ var showModal = function(title,text){
 
 // 配置域名
 var url = (function(){
-    return ""
+    return "https://m.12348.com.cn"
 }());
 
 // 弹出层，关于全部的页面，跳转

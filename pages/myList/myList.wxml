@@ -17,17 +17,25 @@
             </navigator>
     </view>
 </view>
-<view class=" user-center">
-    <view class="user-list">
+<view class="user-center">
+    <view class="user-list" bindtap="onNews">
         <view class="user-list-let">
             <image src="../../images/news.png"></image>
             <text>消息中心</text>
         </view>
+        <view class="left-img">
+             <image src="../../images/yuan.png" class="yuan" 
+             wx:if="{{news != 0 }}"></image>
+            <image src="../../images/b.png"></image>
+        </view>
     </view>
-    <view class="user-list">
+    <view class="user-list" bindtap="onOrder">
         <view class="user-list-let">
             <image src="../../images/order.png"></image>
             <text>我的订单</text>
+        </view>
+         <view class="left-img">
+            <image src="../../images/b.png"></image>
         </view>
     </view>
     <!-- <view class="user-list">

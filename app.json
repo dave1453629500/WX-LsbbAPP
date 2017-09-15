@@ -1,10 +1,15 @@
 {
-  "pages":[ 
+  "pages":[
+        "pages/Consultation/Consultation",
         "pages/login/login",
+        "pages/myListStatic/order/order",
         "pages/myList/myList",
+        "pages/myListStatic/news/news", 
+        "pages/myListStatic/systemNews/systemNews",
+        "pages/myListStatic/ConsultationNews/ConsultationNews",
         "pages/myListModify/myListModify",
         "pages/setUp/setUp",
-        "pages/Consultation/Consultation",
+        
         "pages/questions/questions",
         "pages/demo/demo",
         "pages/Reply/Reply",

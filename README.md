@@ -24,4 +24,9 @@ pages/myListModify/myListModify:更新了个人信息的修改的功能<br />
 完善的BUG：<br />
     1、注册完成之后直接跳转登陆页面记住账号密码
 
+2017-9-15<br />
+pages/myListStatic/order/order：更新了我的订单的查看的功能<br />
+
+完成的BUG：<br />
+    1、解决每次登陆时没有登录的信息
     
