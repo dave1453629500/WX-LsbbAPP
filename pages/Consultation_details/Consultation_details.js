@@ -14,6 +14,7 @@ var datas = {
         faqid:"",        // 本页面的ID
         nReply:0,        // 回复的弹出层
         len:"",     // 回复的数量
+        Dmoney:""   // 打赏的钱
 }
 Page({
         /**
@@ -58,7 +59,6 @@ Page({
             for (var key in dataJson.answer) {
                 detailsData.push(dataJson.answer[key]);
             };
-          
             this.setData({
                 len: detailsData.length,        // 回复的len
                 logo: Utils.url + dataJson.faq.image,         // 头像
@@ -70,7 +70,8 @@ Page({
                 place: dataJson.faq.city_name,    // 地点
                 time: dataJson.faq.date,    // 几分钟前
                 detailsArr: detailsData,      // 回复数据的list
-                faqid: dataJson.faq.id     // 本页面的iD
+                faqid: dataJson.faq.id,     // 本页面的iD
+                Dmoney: `￥${dataJson.faq.money}`  // 打赏的金额
             })
            
         },

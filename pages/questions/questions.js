@@ -314,7 +314,7 @@ thisVal:function(ev){  // 点击价格获取当前的价格
 },
 DefaultMoney:function(){    // 默认的金额
     this.setData({
-        value: 4
+        value: 1
     });
 }, 
 releaseFn:function(){  // 提交数据

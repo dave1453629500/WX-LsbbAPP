@@ -8,7 +8,7 @@ var datas = {
     sdk: "",        // 登陆的sdk
     uid: "",        // 登陆的uid
     faqid:"",       // 详情的唯一ID
-    content:""      // 提交的value
+    content:"",      // 提交的value
 }
 
 Page({
@@ -37,6 +37,7 @@ Page({
       var Ftrim = Utils.Verification.Ftrim;
       value = value.replace(Ftrim,"");
       if (value == "" ) return false;
+    
 
       this.setData({
           content: value
@@ -44,6 +45,7 @@ Page({
   },
   SubmitFn:function(){      // 提交数据加载
     var _this = this;
+    var content = _this.data.content;
     var masterId = _this.data.master_id;
     var parentId = _this.data.parent_id;
     if (masterId == "0" || masterId == ""){
@@ -51,6 +53,7 @@ Page({
             master_id: parentId
         })
     }
+    if (content == "") return false;
 
     // 发送数据
     wx.request({
@@ -71,6 +74,20 @@ Page({
             if (res.data.status){
                 wx.navigateBack({
                     data:1
+                })
+            }else{
+                var mage = res.data.message;
+                wx.showModal({
+                    title: '提示',
+                    content: mage,
+                    showCancel: false,
+                    success: function (res) {
+                        if (res.confirm) {
+                            wx.navigateBack({
+                                data: 1
+                            })
+                        }
+                    }
                 })
             }
         }

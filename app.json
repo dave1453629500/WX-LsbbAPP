@@ -1,7 +1,11 @@
 {
   "pages":[
         "pages/Consultation/Consultation",
+        "pages/forgot_password/forgot_password",
         "pages/login/login",
+        "pages/addimages/addimages",
+        
+        "pages/questions/questions",
         "pages/myListStatic/order/order",
         "pages/myList/myList",
         "pages/myListStatic/news/news", 
@@ -9,12 +13,9 @@
         "pages/myListStatic/ConsultationNews/ConsultationNews",
         "pages/myListModify/myListModify",
         "pages/setUp/setUp",
-        
-        "pages/questions/questions",
         "pages/demo/demo",
         "pages/Reply/Reply",
         "pages/Consultation_details/Consultation_details",
-        "pages/addimages/addimages",
         "pages/static/ContactUs/ContactUs",
         "pages/static/feedback/feedback",
         "pages/static/platform/platform",
@@ -24,7 +25,6 @@
         "pages/static/Help/Help",
         "pages/static/ServiceGuarantee/ServiceGuarantee",
         "pages/modifyPasd/modifyPasd",
-        "pages/forgot_password/forgot_password",
         "pages/register/register",
         "pages/aboutList/aboutList",
         "pages/Agreement/Agreement"

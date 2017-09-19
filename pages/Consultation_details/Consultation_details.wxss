@@ -79,6 +79,11 @@
         color: #333;
         padding-left: 15rpx;
 }
+.list-details-title .details-adopt{
+        font-size:30rpx;
+        color: #d92a2a;
+        padding-left: 15rpx;
+}
 .list-details-title .red-text {
         display: flex;
         align-items: center;
@@ -151,4 +156,7 @@
 .replytext text{
     font-size: 32rpx;
     color: #333;
+}
+.title-user text.money {
+    color: #d92a2a;
 }

@@ -30,7 +30,7 @@ Page({
 
     },
     submitFn: function () {   // 提交数据
-        Utils.setStorage("Reset", "/pages/addimages/addimages");
+        Utils.setStorage("Reset", "/pages/questions/questions");
         var _this = this;
         // 获取到  textarea的val
         var textareaVal = this.data.textareaVal;
@@ -38,20 +38,24 @@ Page({
         var imgsList = this.data.successArr;
         // 获取到本地存储的数据
         var questions = _this.data.questions;
-        
+        // 提交的数据 不为空的话 那么就存储到本地
+    
         if (textareaVal.trim() != "") {
+
+        questions.textareaVal = textareaVal;
+        questions.url = imgsList;
+        Utils.setStorage("tw", questions);
+
         var value = wx.getStorageSync('login');
             if (value != "") {
-                // 提交的数据 不为空的话 那么就存储到本地
-                questions.textareaVal = textareaVal;
-                questions.url = imgsList;
-                Utils.setStorage("tw", questions);
+              
                 wx.navigateTo({
                         url: '/pages/questions/questions'
                 })
             } else {
+          
                 wx.redirectTo({
-                    url: '/pages/login/login'
+                    url: '/pages/forgot_password/forgot_password'
                 })
             }
         }else{

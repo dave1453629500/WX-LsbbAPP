@@ -9,7 +9,15 @@ var data = {           // 数据
     disabled: true                                    // 验证码按钮的点击状态
 };
 var wait = 60;            // 设置全局变量的time
-
+var loginJson = {       // 存储登陆返回的信息
+    image: "",
+    nickname: "",
+    sdk: "",
+    status: "",
+    telphone: "",
+    types: "",
+    uid: "",
+}
 Page({   // 整个page文件
     data: data,
     formSubmit:function(e){
@@ -39,7 +47,7 @@ Page({   // 整个page文件
                 sdk = login.sdk;
         }
         wx.request({   // 接口
-          url: Utils.url + '/index.php/modifyPass?server=1', 
+            url: Utils.url + '/index.php/movepass?server=1', 
             method: "POST",
             data: {
                 userphone: _this.data.iponeVal,
@@ -51,7 +59,18 @@ Page({   // 整个page文件
                 'content-type': 'application/json'
             },
             success: function (res) {
+                var dats = res.data.data;
                 if (res.data.status){
+                    loginJson = {    // 存储登陆状态      
+                        image: dats.image,
+                        nickname: dats.nickname,
+                        sdk: dats.sdk,
+                        status: dats.status,
+                        telphone: dats.telphone,
+                        types: dats.type,
+                        uid: dats.uid
+                    }
+                    Utils.setStorage("login", loginJson);  // 存储到本地缓存
                     wx.showModal({
                         title: '提示',
                         content: res.data.message,

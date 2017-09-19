@@ -82,6 +82,7 @@ PersonalCenter:function(){  // 获取修改的个人信息
             'content-type': 'application/json' // 默认值
         },
         success: function (res) {
+            console.log(res)
             var res = res.data.data.user;
             var imageSrc = res.image != null ? Utils.url + res.image : _this.data.image;
 

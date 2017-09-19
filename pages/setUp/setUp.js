@@ -89,12 +89,12 @@ Page({
                   success: function (res) {
                           if (res.data.status){
                                   wx.reLaunch({
-                                          url: '/pages/login/login'
+                                      url: '/pages/forgot_password/forgot_password'
                                   })
                                   Utils.removeStorage("login");
                                   
                           }else{
-                              Utils.reLaunch(res.data.message,"/pages/login/login");
+                              Utils.reLaunch(res.data.message,"/pages/forgot_password/forgot_password");
                               Utils.removeStorage("login");
                           }
                           return false;

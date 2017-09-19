@@ -7,7 +7,7 @@ var defaultData = {
         results: [] ,             // 加载默认的数据
         scrollTop:0,           // 记录scrollTop的值   
         navAtrr: ['最新', "婚姻家庭", "债权债务", "劳动纠纷"],
-        navPage:["","hyjt",'zwjf','ldjf'],      // 传值
+        navPage:["","hyjt",'zqzw','ldjf'],      // 传值
         value:"0" ,             //nav点击的时候对应的value 
         layerArr:["回复","时间","打赏"],   // 排序
         layerVal:"3",  // 排序弹层val
@@ -190,7 +190,7 @@ myNews:function(){      // 点击我的页面
         })
     }else{
         wx.redirectTo({
-            url: '/pages/login/login'
+            url: '/pages/forgot_password/forgot_password'
         })
     }
 },

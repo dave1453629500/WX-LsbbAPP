@@ -10,6 +10,16 @@ var data = {           // 数据
 };
 var wait = 60;            // 设置全局变量的time
 
+var loginJson = {       // 存储登陆返回的信息
+    image: "",
+    nickname: "",
+    sdk: "",
+    status: "",
+    telphone: "",
+    types: "",
+    uid: "",
+}
+
 Page({   // 整个page文件
     data: data,
     formSubmit:function(e){
@@ -34,7 +44,7 @@ Page({   // 整个page文件
             return false;
         }
         wx.request({   // 接口
-            url: Utils.url + '/index.php/forgetpass?server=1', 
+            url: Utils.url + '/index.php/movepass?server=1', 
             method: "POST",
             data: {
                 userphone: _this.data.iponeVal,
@@ -45,20 +55,30 @@ Page({   // 整个page文件
                 'content-type': 'application/json'
             },
             success: function (res) {
+                var dats = res.data.data;
+                var Reset = wx.getStorageSync("Reset");
                 if (res.data.status){
-                    wx.showModal({
-                        title: '提示',
-                        content: res.data.message,
-                        showCancel: false,
-                        success: function (res) {
-                            if (res.confirm) {
-                                wx.redirectTo({
-                                    url: '/pages/login/login'
-                                })
-                            }
-                        }
-                    })
+                    if (Reset) {
+                     wx.redirectTo({   // 跳转别的页面，关闭当前页面
+                            url: Reset
+                        })
+                    } else {
+                        wx.redirectTo({   // 跳转别的页面，关闭当前页面
+                            url: "/pages/Consultation/Consultation"
+                        })
+                    }
+                    loginJson = {                // 存储登陆状态      
+                        image: dats.image,
+                        nickname: dats.nickname,
+                        sdk: dats.sdk,
+                        status: dats.status,
+                        telphone: dats.telphone,
+                        types: dats.type,
+                        uid: dats.uid
+                    }
+                    Utils.setStorage("login", loginJson);     // 存储到本地缓存
                 }else{
+                    // 登陆失败的话 现在的处理就是放在本页面
                     Utils.showModal(res.data.message);
                     return false;
                 }
