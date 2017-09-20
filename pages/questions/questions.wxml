@@ -1,7 +1,9 @@
 <!--title部分  -->
 <view class="title">
     <view class="title-txt">
-        <text>打赏金额</text>
+       <view class="title-top" bindtap="detailed">
+             <text>打赏金额</text><image src="/images/yw.png"></image>
+       </view>
         <text>开启打赏，律师第一时间回复</text>
     </view>
 </view> 

@@ -13,7 +13,7 @@
 .title text:first-child {
     font-size: 36rpx;
     color: #d92a2a;
-    padding-bottom: 15rpx;
+  
 }
 .title text:last-child{
     color: #a9a9a9;
@@ -138,4 +138,14 @@
 .address-box {
         line-height: 65px;
         text-align: center;
+}
+.title-top {
+    padding-bottom: 15rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title-top image {
+    height: 32rpx;
+    width: 32rpx;
 }

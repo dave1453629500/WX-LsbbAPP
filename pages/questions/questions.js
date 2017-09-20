@@ -373,5 +373,10 @@ releaseFn:function(){  // 提交数据
                 }
             }
         })
-    }
+},
+detailed: function () { // 点击打赏金额的详情
+    wx.navigateTo({
+        url: '/pages/static/moneyDetailed/moneyDetailed'
+    })
+}   
 })
