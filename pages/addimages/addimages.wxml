@@ -11,6 +11,7 @@
        <image src="{{item}}" data-id="{{index}}"></image>
     </view>
     <image   src="/images/upload.png" bindtap="chooseimage"></image>
+    
     <text>{{index}}/{{len}}</text>
 </view>
 <!--温馨提示  -->

@@ -1,10 +1,11 @@
 {
   "pages":[
+      "pages/forgot_password/forgot_password",
         "pages/Consultation/Consultation",
         "pages/questions/questions",
         "pages/static/moneyDetailed/moneyDetailed",
         
-        "pages/forgot_password/forgot_password",
+        
         "pages/login/login",
         "pages/addimages/addimages",
         "pages/myListStatic/order/order",

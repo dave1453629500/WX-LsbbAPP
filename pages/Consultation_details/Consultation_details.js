@@ -15,14 +15,17 @@ var datas = {
     len:"",     // 回复的数量
     Dmoney:"",   // 打赏的钱
     images:[],   // 详情图片的list
-    success:"0" // 回复的状态
+    success:"0", // 回复的状态
+    isShow:false // 回复两个字的显示状态
 }
 Page({
 data: datas,
 onLoad: function (options) {
+    if (JSON.stringify(options) == "{}") return false;
     var dataJson = "";  // 接受数据
     dataJson = JSON.parse(options.a);   // 获取解析的data
-    this.assignment(dataJson);
+    this.assignment(dataJson);  // 加载数据
+
 },
 replyFn:function(e){ // 回复
     var _this = this;
@@ -62,10 +65,19 @@ ondataFn:function(){  // 点击回复弹层调转穿参
     })
 },
 assignment: function (dataJson){    // 每次加载数据的赋值操作
+
+    var loginDtat = wx.getStorageSync("login");
+    var uid = loginDtat.uid;    // 获取登陆对应的uid
     var detailsData = [];   // 每次加载的时候清空一次
+
+    var Dmoney = loginDtat.uid != dataJson.faq.uid ? "" : `￥${dataJson.faq.money}`; // 显示的金额
+
+    var reply = loginDtat.uid != dataJson.faq.uid ? false : true; // 回复显示的状态
+
     for (var key in dataJson.answer) {
         detailsData.push(dataJson.answer[key]);
     };
+    
     this.setData({
         len: dataJson.faq.answer_count,        // 回复的len
         logo: Utils.url + dataJson.faq.image,         // 头像
@@ -78,9 +90,10 @@ assignment: function (dataJson){    // 每次加载数据的赋值操作
         time: dataJson.faq.date,    // 几分钟前
         detailsArr: detailsData,      // 回复数据的list
         faqid: dataJson.faq.id,     // 本页面的iD
-        Dmoney: `￥${dataJson.faq.money}`,  // 打赏的金额
+        Dmoney: Dmoney,  // 打赏的金额
         images: dataJson.faq.images,     // 获取详情的images的list
-        answerAuth: dataJson.faq.answerAuth // 判断是不是能回复
+        answerAuth: dataJson.faq.answerAuth, // 判断是不是能回复
+        isShow: reply   // 回复显示的状态
         
     })
 },

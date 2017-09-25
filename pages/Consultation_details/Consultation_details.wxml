@@ -46,7 +46,7 @@
                 <view class='list-details-content'>
                         <view class='content-text'>
                                 <text >{{timeCenter.content}}</text>
-                                <text class="reply" bindtap="replyFn" id="{{timeCenter.id}}" data-parent_id="{{timeCenter.id}}" data-master_id="{{timeCenter.master_id}}">回复</text>
+                                <text class="reply" bindtap="replyFn" id="{{timeCenter.id}}" data-parent_id="{{timeCenter.id}}" data-master_id="{{timeCenter.master_id}}" wx:if="{{isShow}}">回复</text>
                             <text>{{timeCenter.date}}</text>
                         </view>
                         <view class='content-reply' wx:if="{{timeCenter.child.length != '' }}" > 
